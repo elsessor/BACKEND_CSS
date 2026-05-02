@@ -37,6 +37,18 @@ export function createApp() {
   app.use(cors());
   app.use(express.json());
 
+  app.get("/", (req, res) => {
+    return res.json({
+      service: "Course Shifting Subsystem Backend",
+      version: "1.0.0",
+      status: "running",
+      endpoints: {
+        health: "/health",
+        api: "/api/css"
+      }
+    });
+  });
+
   app.get("/health", (req, res) => {
     return res.json({
       service: "css-backend",
